@@ -30,12 +30,12 @@ class Data:
                             json_list.append(json.loads(_str))
                         except:
                             pass
-        print("read file:",time.time()-start_time)
+        # print("read file:",time.time()-start_time)
         # print(json_list[0])
         # print(json_list[1])
         # print(json_list[2])
         # records = self.__listOfNestedDict2ListOfDict(json_list)
-        print("list Of Nested Dict to List of Dict:",time.time()-start_time)
+        # print("list Of Nested Dict to List of Dict:",time.time()-start_time)
         # print(records[0])
         self.__4Events4PerP = {}
         self.__4Events4PerR = {}
@@ -52,14 +52,14 @@ class Data:
             if not self.__4Events4PerPPerR[i['actor']['login']].get(i['repo']['name'], 0):
                 self.__4Events4PerPPerR[i['actor']['login']].update({i['repo']['name']: {}})
             self.__4Events4PerPPerR[i['actor']['login']][i['repo']['name']][i['type']] = self.__4Events4PerPPerR[i['actor']['login']][i['repo']['name']].get(i['type'], 0)+1
-        print("count:",time.time()-start_time)
+        # print("count:",time.time()-start_time)
         with open('1.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerP,f)
         with open('2.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerR,f)
         with open('3.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerPPerR,f)
-        print("write",time.time()-start_time)
+        # print("write",time.time()-start_time)
 
     def __parseDict(self, d: dict, prefix: str):
         _d = {}
