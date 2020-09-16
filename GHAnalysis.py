@@ -40,7 +40,7 @@ class Data:
                     pool.apply_async(self.readFile, args=(f, dict_address))
             pool.close()
             pool.join()
-        print("read file:",time.time()-start_time)
+        # print("read file:",time.time()-start_time)
 
         for root, dic, files in os.walk("json_temp"):
             for f in files:
@@ -62,14 +62,14 @@ class Data:
                             self.__4Events4PerPPerR[item['actor__login']].update({item['repo__name']: {}})
                         self.__4Events4PerPPerR[item['actor__login']][item['repo__name']][item['type']] = \
                             self.__4Events4PerPPerR[item['actor__login']][item['repo__name']].get(item['type'], 0) + 1
-        print("count:",time.time()-start_time)
+        # print("count:",time.time()-start_time)
         with open('1.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerP, f)
         with open('2.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerR, f)
         with open('3.json', 'w', encoding='utf-8') as f:
             json.dump(self.__4Events4PerPPerR, f)
-        print("write file:",time.time()-start_time)
+        # print("write file:",time.time()-start_time)
 
 
     def saveJson(self, json_list, filename):
